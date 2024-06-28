@@ -1,12 +1,12 @@
 import numpy as np
 
 
-def calculate(lists):
+def calculate(list):
 
-  if len(lists) == 9:
+  if len(list) == 9:
 
-    array_t = np.array(lists)
-    array = array_t.reshape(3, 3)
+    array1 = np.array(list)
+    array = array1.reshape(3, 3)
     #print(array)
     calculations = {
         'mean': [
