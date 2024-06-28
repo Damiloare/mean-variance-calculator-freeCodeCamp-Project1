@@ -1,8 +1,49 @@
-# This entrypoint file to be used in development. Start by reading README.md
-import mean_var_std
-from unittest import main
+import numpy as np
 
-print(mean_var_std.calculate([0,1,2,3,4,5,6,7,8]))
 
-# Run unit tests automatically
-main(module='test_module', exit=False)
+def calculate(list):
+
+  if len(list) == 9:
+
+    array1 = np.array(list)
+    array = array1.reshape(3, 3)
+    #print(array)
+    calculations = {
+        'mean': [
+            np.mean(array, axis=0).tolist(),
+            np.mean(array, axis=1).tolist(),
+            np.mean(array)
+        ],
+        'variance': [
+            np.var(array, axis=0).tolist(),
+            np.var(array, axis=1).tolist(),
+            np.var(array.flatten())
+        ],
+        'standard deviation': [
+            np.std(array, axis=0).tolist(),
+            np.std(array, axis=1).tolist(),
+            np.std(array.flatten())
+        ],
+        'max': [
+            np.max(array, axis=0).tolist(),
+            np.max(array, axis=1).tolist(),
+            np.max(array.flatten())
+        ],
+        'min': [
+            np.min(array, axis=0).tolist(),
+            np.min(array, axis=1).tolist(),
+            np.min(array.flatten())
+        ],
+        'sum': [
+            np.sum(array, axis=0).tolist(),
+            np.sum(array, axis=1).tolist(),
+            np.sum(array.flatten())
+        ]
+    }
+  else:
+    raise ValueError('List must contain nine numbers.')
+  return calculations
+
+
+result = calculate([34, 45, 67, 23, 78.456, 786, 23, 56])
+print(result)
